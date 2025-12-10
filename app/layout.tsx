@@ -1,0 +1,67 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Navbar05Page from "@/components/navbar-05/navbar-05";
+import Footer05Page from "@/components/footer-05/footer-05";
+import { Toaster } from "@/components/ui/sonner";
+import ConditionalLayout from "./conditionalLayout";
+import { ThemeProvider } from "@/components/theme-provider";
+import Script from "next/script";
+import BeamsInit from "@/components/beams-init";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "INFRAGEN",
+  description: "an ai app to boost your company",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="icon"
+          href="https://infra-ai-dun.vercel.app/logo.svg"
+          type="image/svg+xml"
+        />
+        <Script
+          src="https://js.pusher.com/beams/2.1.0/push-notifications-cdn.js"
+          strategy="afterInteractive"
+        />
+        <Script src="/assets/lang-config.js" strategy="beforeInteractive" />
+        <Script src="/assets/translation.js" strategy="beforeInteractive" />
+        <Script
+          src="//translate.google.com/translate_a/element.js?cb=TranslateInit"
+          strategy="afterInteractive"
+        />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <BeamsInit />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ConditionalLayout>{children}</ConditionalLayout>
+          <Toaster position="top-center" />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
