@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# INFRAGEN — Agentic AI Planning Platform
 
-## Getting Started
+INFRAGEN is a full-stack agentic AI platform that helps companies plan and improve their operations using AI-powered insights, document knowledge retrieval, and real-time recommendations.
 
-First, run the development server:
+🔗 **Live Demo:** https://infragen-48opxl8b5-mounikas-projects-8cc60354.vercel.app
+
+## My Role: Backend Developer
+
+I was responsible for the backend architecture and integration layer of this team project, including:
+
+- **AI Integration:** Built the LangChain + Google Gemini integration powering the AI chat and suggestion features
+- **Database Design:** Designed MongoDB schemas (`Knowledge.ts`, `KnowledgeChunk.ts`, `User.ts`) using Mongoose for structured data validation
+- **Authentication:** Implemented JWT-based authentication with bcrypt password hashing
+- **Deployment:** Independently forked, configured, and deployed the full application (MongoDB Atlas, Google AI Studio, Pusher Beams, Vercel environment setup)
+
+## Tech Stack
+
+- **Framework:** Next.js 15 (App Router), React 19, TypeScript
+- **AI/ML:** LangChain, Google Gemini (`gemini-2.0-flash`), `@xenova/transformers` for embeddings
+- **Database:** MongoDB Atlas with Mongoose ODM
+- **Auth:** JWT, bcryptjs
+- **Real-time:** Pusher Beams (push notifications)
+- **UI:** Tailwind CSS, Radix UI, shadcn/ui components
+- **Validation:** Zod, React Hook Form
+- **Deployment:** Vercel
+
+## Features
+
+- AI-powered chat assistant for organizational insights
+- Knowledge base management (CSV/TXT file upload and retrieval)
+- Domain analysis and AI-generated suggestions
+- Secure user authentication and profile management
+
+## Known Limitations
+
+- The AI chat feature requires a Gemini API key with billing enabled on Google Cloud (Google's free tier requires billing verification to activate quota). Authentication, MongoDB integration, and knowledge/file management are fully functional and live at the demo link above.
+
+## Getting Started (Local Development)
 
 ```bash
+git clone https://github.com/Mounikam0/infragen-ai.git
+cd infragen-ai
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a `.env` file based on `sample-env` with your own:
+- `MONGODB_URI`
+- `JWT_SECRET`
+- `GOOGLE_API_KEY`
+- `BEAMS_INSTANCE_ID`
+- `BEAMS_SECRET_KEY`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*This project was built as part of a team submission (originally forked from [kavana238/infragen-ai](https://github.com/kavana238/infragen-ai)), with my contributions focused on backend architecture and AI integration.*
